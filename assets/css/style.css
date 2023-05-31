@@ -1,7 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;600;700&display=swap');
 
 :root {
     --color-primary: #47B5FF;
+    --secondary-color: #06283D;
 }
 
 * {
@@ -10,3 +11,136 @@
     box-sizing: border-box;
     text-decoration: none;
 }
+
+body {
+  background: #f2fbff;
+  font-family: 'Inter', sans-serif;
+}
+.main {
+  width: 100%;
+  display: flex;
+}
+.sidebar {
+  height: 100vh;
+  width: 300px;
+  background: var(--color-primary);
+  transition: all 0.5s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+.sidebar .logo {
+  font-size: 42px;
+  color: white;
+  font-weight: 700;
+  height: 20%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-items {
+    display: flex;
+    width: 100%;
+    height: 25%;
+}
+.nav-items ul {
+    width: 100%;
+}
+.nav-items ul li {
+    height: 33%;
+    padding-left: 25%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.nav-items a {
+    color: white;
+    font-size: 20px;
+    font-weight: 200;
+}
+.nav-items ul li:hover {
+    background-color: #198bd6;
+}
+.active {
+    background-color: #2FABFF;
+}
+.logout {
+    height: 55%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    padding-bottom: 30px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #e43b3b;
+}
+.logout div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.logout div:hover {
+    color: #ac2222;
+    cursor: pointer;
+}
+.d-none {
+    display: none;
+}
+header {
+  background: #D9D9D9;
+  padding: 30px 50px 30px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header i.fa-bars {
+  color: var(--secondary-color);
+  font-size: 30px;
+  cursor: pointer;
+}
+header i.fa-wallet {
+  color: #256D85;
+}
+
+.header-saldo {
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--secondary-color);
+  margin-left: 50px;
+}
+.header-right {
+    color: var(--secondary-color);
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+}
+.header-right i {
+    margin-left: 20px;
+    font-size: 40px;
+    color: #256D85;
+}
+.main.close .sidebar {
+  width: 0px;
+}
+.main.close .content {
+  width: 100%;
+}
+
+.content {
+    width: calc(100% - 300px);
+    transition: all 0.5s ease-in-out;
+}
+main {
+    width: 100%;
+    padding: 5% 10%;
+}
+.card {
+    width: 100%;
+    display: flex;
+    background-color: white;
+    padding: 40px 40px;
+    box-shadow: 0px 7px 32px rgba(0, 22, 35, 0.1);
+    border-radius: 15px;
+}
+  

@@ -12,35 +12,47 @@
         $history = mysqli_query($connection, $q);
     }
 
-    function top_up() {
+    function numberOnly($number) {
+        $number = str_replace('Rp', '', $number);
+        $number = str_replace('.', '', $number);
+        $number = str_replace(',', '', $number);
+        return intval($number);
+    }
+
+    function top_up($data) {
         global $connection, $user_id, $saldo;
-        $saldo_now = str_replace(',', '', $saldo);
-        $saldo_now = str_replace('.', '', $saldo_now);
-        if ($_POST) {
-            $saldo_post = $_POST['saldo'] + $saldo_now;
-            $q = "UPDATE users SET saldo='$saldo_post' WHERE id=$user_id";
-            $update_saldo = mysqli_query($connection, $q);
-            if ($update_saldo) {
-                $saldo = number_format($saldo_post, 0, ',', '.');
-            } else {
-                echo "Error :" . mysqli_error($connection);
-            }
+        $saldo_post = numberOnly($data['saldo']) + numberOnly($saldo);
+
+        $q = "UPDATE users SET saldo='$saldo_post' WHERE id=$user_id";
+        $update_saldo = mysqli_query($connection, $q);
+        if ($update_saldo) {
+            $saldo = number_format($saldo_post, 0, ',', '.');
+            return 'Update Saldo Berhasil';
+        } else {
+            return mysqli_error($connection);
         }
     }
     
     function post_tambah($data)
     {
         global $connection, $user_id;
-        $no_kartu = $data['no_kartu'];
-        $nominal = $data['nominal'];
-        $provider = $data['provider'];
-        $tanggal = date("y/m/d");
+        if ($_POST) {            
+            $no_kartu = $data['no_kartu'];
+            $nominal = $data['nominal'];
+            $provider = $data['provider'];
+            $tanggal = date("y/m/d");
 
-        $query = "INSERT INTO riwayat 
-                    VALUES
-                    ('','$no_kartu','$nominal', '$provider', '$tanggal', '$user_id')";
-        mysqli_query($connection, $query);
-
-        return mysqli_affected_rows($connection);
+            $nominal_saldo = [
+                'saldo' => strval(-$nominal)
+            ];
+            top_up($nominal_saldo);
+    
+            $query = "INSERT INTO riwayat 
+                        VALUES
+                        ('','$no_kartu','$nominal', '$provider', '$tanggal', '$user_id')";
+            mysqli_query($connection, $query);
+    
+            return mysqli_affected_rows($connection);
+        }
     }
 ?>

@@ -4,7 +4,9 @@
         $nama = $row["nama"];
         $saldo = number_format($row["saldo"], 0, ',', '.');
     }
-    top_up();
+    if ($_POST['saldo'] ?? '') {
+        top_up($_POST);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +52,9 @@
         </main>
     </div>
   </div>
-
+  <div id="simpleToast">
+  ⚠️ <span>The notification message...</span>
+  </div>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

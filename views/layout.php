@@ -1,10 +1,10 @@
 <?php
-    get_user();
     while ($row = mysqli_fetch_assoc($user)) {
         $id = $row["id"];
         $nama = $row["nama"];
-        $saldo = number_format($row["saldo"], 0, ',', '.');;
+        $saldo = number_format($row["saldo"], 0, ',', '.');
     }
+    top_up();
 ?>
 <!DOCTYPE html>
 <html lang="en">

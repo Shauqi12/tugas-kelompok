@@ -12,9 +12,10 @@ if (isset($_POST["submit"])) {
         </script>";
     }
 }
+get_user();
+afterPulsa();
 ?>
 <div class="card">
-    
     <form action="" method="post" class="top-up">
         <h1>PULSA</h1>
         <input type="text" placeholder="Masukan Nomor HP" name="no_kartu" class="input-topup1" required>

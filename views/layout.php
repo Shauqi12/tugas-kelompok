@@ -5,7 +5,9 @@
         $saldo = number_format($row["saldo"], 0, ',', '.');
     }
     if ($_POST['saldo'] ?? '') {
-        top_up($_POST);
+        top_up($_POST['saldo']);
+    } elseif ($_POST['nominal'] ?? '') {
+        top_up(-$_POST['nominal']);
     }
 ?>
 <!DOCTYPE html>

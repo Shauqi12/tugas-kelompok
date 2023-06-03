@@ -21,7 +21,7 @@
 
     function top_up($data) {
         global $connection, $user_id, $saldo;
-        $saldo_post = numberOnly($data['saldo']) + numberOnly($saldo);
+        $saldo_post = numberOnly($data) + numberOnly($saldo);
 
         $q = "UPDATE users SET saldo='$saldo_post' WHERE id=$user_id";
         $update_saldo = mysqli_query($connection, $q);

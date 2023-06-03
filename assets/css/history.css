@@ -1,0 +1,14 @@
+table{
+    width: 70%;
+}
+
+
+.card > table, th, td{
+    border: 5px solid var(--color-primary);
+    border-collapse: collapse ;
+}
+
+tr th{
+    background-color: var(--color-primary);
+    color: aliceblue;
+}

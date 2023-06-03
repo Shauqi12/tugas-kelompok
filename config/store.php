@@ -42,17 +42,12 @@
             $provider = $data['provider'];
             $tanggal = date("y/m/d");
 
-            $nominal_saldo = [
-                'saldo' => strval(-$nominal)
-            ];
-            top_up($nominal_saldo);
-    
-            $query = "INSERT INTO riwayat 
-                        VALUES
-                        ('','$no_kartu','$nominal', '$provider', '$tanggal', '$user_id')";
-            mysqli_query($connection, $query);
-    
-            return mysqli_affected_rows($connection);
+        $query = "INSERT INTO riwayat 
+                    VALUES
+                    ('','$no_kartu','$provider', '$nominal', '$tanggal', '$user_id')";
+        mysqli_query($connection, $query);
+
+        return mysqli_affected_rows($connection);
         }
     }
 ?>
